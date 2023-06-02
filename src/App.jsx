@@ -14,19 +14,18 @@ const App = () => {
     // Split the input into an array of strings
     let strings = text.split(" ");
 
-    // Sort the strings in descending order by length
-    strings.sort((a, b) => {
-      return b.length - a.length;
-    });
+    // Sort the strings
+    strings.sort((a, b) => b.length - a.length);
 
     // Get the first five largest strings
     const largest = strings.slice(0, 5);
 
-    // Update the state with the largest strings
-    setLargestStrings(largest);
-  };
+    // Remove duplicates using a Set javascript build in method
+    const uniqueLargest = [...new Set(largest)];
 
-  console.log(largestStrings);
+    // Update the state with the unique largest strings
+    setLargestStrings(uniqueLargest);
+  };
 
   return (
     <>
